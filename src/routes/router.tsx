@@ -1,21 +1,15 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-const HomePage = lazy(() =>
-  import("@/pages/HomePage").then((m) => ({ default: m.HomePage }))
-);
-const BoxesPage = lazy(() =>
-  import("@/pages/BoxesPage").then((m) => ({ default: m.BoxesPage }))
-);
-const DealsPage = lazy(() =>
-  import("@/pages/DealsPage").then((m) => ({ default: m.DealsPage }))
-);
-const LoginPage = lazy(() =>
-  import("@/pages/LoginPage").then((m) => ({ default: m.LoginPage }))
-);
-const RegisterPage = lazy(() =>
-  import("@/pages/SingupPage").then((m) => ({ default: m.RegisterPage }))
-);
+const HomePage = lazy(() => import("../pages").then(m => ({ default: m.HomePage })));
+
+const BoxesPage = lazy(() => import("../pages").then(m => ({ default: m.BoxesPage })));
+
+const DealsPage = lazy(() => import("../pages").then(m => ({ default: m.DealsPage })));
+
+const LoginPage = lazy(() => import("../pages").then(m => ({ default: m.LoginPage })));
+
+const SingupPage = lazy(() => import("../pages").then(m => ({ default: m.SingupPage })));
 
 export function AppRouter() {
   return (
@@ -26,7 +20,7 @@ export function AppRouter() {
         <Route path="/boxes" element={<BoxesPage />} />
 
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<SingupPage />} />
       </Routes>
     </Suspense>
   );
